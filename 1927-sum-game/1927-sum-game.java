@@ -1,17 +1,31 @@
 class Solution {
-    public boolean sumGame(String A) {
-        int[] sum = {0, 0}, q = {0, 0};
-        int n = A.length();
-
-        for (int i = 0; i < n; i++) {
-            int j = i / (n >> 1);
-            if (A.charAt(i) == '?')
-                q[j]++;
-            else
-                sum[j] += A.charAt(i) - '0';
+    public boolean sumGame(String s) {
+        int s1=0,s2=0,c1=0,c2=0;
+        int l=0,r=s.length()-1;
+        while (l < r) {
+        if (s.charAt(l) != '?'){
+            s1 += s.charAt(l) - '0';
+        }else{
+            c1++;
+        }
+        if (s.charAt(r) != '?'){
+            s2 += s.charAt(r) - '0';
+        }else{
+            c2++;
+        }
+        l++;
+        r--;
         }
 
-        return ((q[0] + q[1]) % 2 == 1) ||
-               ((sum[0] - sum[1]) << 1) != (q[1] - q[0]) * 9;
+        if(c1+c2==0)return s1!=s2;
+
+        if((c1+c2)%2!=0)return true;
+
+        if(c1==c2)return s1!=s2;
+
+        return 2 * (s1 - s2) != 9 * (c2 - c1);
+
+
+
     }
 }
