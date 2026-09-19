@@ -1,3 +1,11 @@
+// class Solution {
+//     public int strStr(String haystack, String needle) {
+//         if(haystack.contains(needle)){
+//             return haystack.indexOf(needle);
+//         }
+//         return -1;
+//     }
+// }
 class Solution {
     public int strStr(String h, String n) {
         if(!h.contains(n))return -1;
@@ -9,3 +17,4 @@ class Solution {
         
     }
 }
+
